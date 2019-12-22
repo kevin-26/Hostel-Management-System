@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     return render_template('index.html')
-@app.route('/about')
+@app.route('/about',methods=['POST'])
 def about():
     return render_template('about.html')
 @app.route('/singleadd',methods=['POST'])
@@ -28,28 +28,37 @@ def dataInput():
         age = request.form['age']
         gender = request.form['gen']
         branch = request.form['bra']
-        with sql.connect("database.db") as con:
-                cur = con.cursor()
-                cur.execute("INSERT INTO records (room_no,name,roll_no,age,gender,branch)VALUES (?,?,?,?,?,?)",(302,nm,2,age,gender,branch) )
-                
-                con.commit()
+        with sqlite3.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute("INSERT INTO hostel_record (room_no,name,roll_no,age,gender,branch)VALUES (?,?,?,?,?,?)",(302,name,2,age,gender,branch) )
+            con.commit()
     except:
-        con.rollback()
-      
-      
+        conn.rollback()
     finally:
+        conn.close()
         return "done"
-        con.close()
-
+@app.route('/addAll',methods=['POST'])
 @app.route('/addAll')
 def addAll():
-    return render_template('addAll.html')
+    return "hello"
+    
 @app.route('/singledel')
 def singledel():
     return render_template('singledel.html')
-@app.route('/display')
+@app.route('/display',methods=['POST'])
 def display():
-    return render_template('display.html')
+
+    cony = sqlite3.connect("database.db")
+    cony.row_factory = sqlite3.Row
+   
+    currr = cony.cursor()
+    currr.execute("select * from hostel_records")
+   
+    rows = currr.fetchall()
+    return render_template('display.html',rows = rows)
+
+if __name__ == '__main__':
+   app.run(debug = True)
 
 if __name__ == '__main__':
     app.run(debug = True)
