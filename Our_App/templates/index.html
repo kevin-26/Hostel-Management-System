@@ -8,7 +8,7 @@
             <div id="info-section">
                     <div class="carousel">      
                         <div class="rect-future child-container">
-                            <form action = "/singleadd" method="post">
+                            <form action = "{{ url_for('singleadd') }} ", method="post">
                                 <button type = "submit" name="singleadd" value = "singleadd">Add a single student's data</button>
                             </form>
                         </div>

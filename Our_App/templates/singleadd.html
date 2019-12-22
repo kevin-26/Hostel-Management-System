@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hostel Management System</title>
-    </head>
-    <body>
-        <h1>About page</h1>
-        
-    </body>
+   <body>
+      <form action = "{{ url_for('dataInput') }}" method = "POST">
+         <h3>Student Information</h3>
+         Name<br>
+         <input type = "text" name = "nm" /></br>
+         
+         Age<br>
+         <input type = "text" name = "age" /></br>
+         
+         Gender<br>
+         <input type = "text" name = "gen" /><br>
+         
+         Branch<br>
+         <input type = "text" name = "bra" /><br>
+         <input type = "submit" value = "submit" /><br>
+      </form>
+   </body>
 </html>
