@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Hotel Management System</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='map.css') }}">
     </head>
-    <body>
-        <h1>Hello</h1>
+        <body style = "background-image: url('../static/');">
+            <div id="info-section">
+                    <div class="carousel">      
+                        <div class="rect-future child-container">
+                            <form action = "/singleadd" method="post">
+                                <button type = "submit" name="singleadd" value = "singleadd">Add a single student's data</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div id="info-section">
+                    <div class="carousel">      
+                        <div class="rect-future child-container">
+                            <form action = "/about" method="post">
+                                <button type = "submit" name="about" value = "about">About</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div id="info-section">
+                    <div class="carousel">      
+                        <div class="rect-future child-container">
+                            <form action = "/singledel" method="post">
+                                <button type = "submit" name="singledel" value = "singledel">Delete a student's record</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div id="info-section">
+                    <div class="carousel">      
+                        <div class="rect-future child-container">
+                            <form action = "/addAll" method="post">
+                                <button type = "submit" name="addAll" value = "addAll">Add data from CSV</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div id="info-section">
+                    <div class="carousel">      
+                        <div class="rect-future child-container">
+                            <form action = "/display" method="post">
+                                <button type = "submit" name="display" value = "display">Display hostel's records</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div class="mapouter">
+                <div class="gmap_canvas rect-future" id = "map">
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=mit%20school%20of%20engineering%2C%20pune&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>  
+            </div>
     </body>
 </html>
